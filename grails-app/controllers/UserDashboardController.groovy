@@ -1,0 +1,6 @@
+
+
+class UserDashboardController {
+
+    def index() { }
+}
