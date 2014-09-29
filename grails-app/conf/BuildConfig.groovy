@@ -1,4 +1,4 @@
-grails.servlet.version = "2.5" // Change depending on target container compliance (2.5 or 3.0)
+grails.servlet.version = "3.0" // Change depending on target container compliance (2.5 or 3.0)
 grails.project.class.dir = "target/classes"
 grails.project.test.class.dir = "target/test-classes"
 grails.project.test.reports.dir = "target/test-reports"
@@ -42,25 +42,29 @@ grails.project.dependency.resolution = {
         // specify dependencies here under either 'build', 'compile', 'runtime', 'test' or 'provided' scopes e.g.
 
         // runtime 'mysql:mysql-connector-java:5.1.22'
+        compile 'org.springframework:spring-aop:3.2.9.RELEASE'
+        compile 'org.springframework:spring-expression:3.2.9.RELEASE'
     }
 
     plugins {
-        runtime ":hibernate:$grailsVersion"
-        runtime ":jquery:1.8.3"
-        runtime ":resources:1.2"
 
-        // Uncomment these (or add new ones) to enable additional resources capabilities
-        //runtime ":zipped-resources:1.0"
-        //runtime ":cached-resources:1.0"
-        //runtime ":yui-minify-resources:0.1.5"
+        // plugins for the build system only
+        build ":tomcat:7.0.55"
 
-        build ":tomcat:$grailsVersion"
+        // plugins for the compile step
+        compile ":scaffolding:2.1.2"
+        compile ':cache:1.1.7'
+        compile ":asset-pipeline:1.9.6"
 
-        runtime ":database-migration:1.3.2"
+        // plugins needed at runtime but not for compilation
+        runtime ":hibernate4:4.3.5.5" { // or ":hibernate:3.6.10.17"
+            excludes "javassist"
+        }
+        runtime ":hibernate4:4.3.5.5" // or ":hibernate:3.6.10.17"
+        runtime ":database-migration:1.4.0"
+        runtime ":jquery:1.11.1"
 
-        compile ':cache:1.0.1'
-
-        compile(':spring-security-core:1.2.7.3')
-        compile ':bruteforce-defender:1.0'
+        compile ":spring-security-core:2.0-RC3"
+       compile ':bruteforce-defender:1.1'
     }
 }

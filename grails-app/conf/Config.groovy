@@ -91,13 +91,13 @@ log4j = {
 }
 
 // Added by the Spring Security Core plugin:
-grails.plugins.springsecurity.userLookup.userDomainClassName = 'name.stokito.User'
-grails.plugins.springsecurity.userLookup.authorityJoinClassName = 'name.stokito.UserRole'
-grails.plugins.springsecurity.authority.className = 'name.stokito.Role'
+grails.plugin.springsecurity.userLookup.userDomainClassName = 'name.stokito.User'
+grails.plugin.springsecurity.userLookup.authorityJoinClassName = 'name.stokito.UserRole'
+grails.plugin.springsecurity.authority.className = 'name.stokito.Role'
 
-grails.plugins.springsecurity.successHandler.defaultTargetUrl='/userDashboard'
+grails.plugin.springsecurity.successHandler.defaultTargetUrl='/userDashboard'
 
-grails.plugins.springsecurity.useSecurityEventListener = true
+grails.plugin.springsecurity.useSecurityEventListener = true
 bruteforcedefender {
     time = 2
     allowedNumberOfAttempts = 2
